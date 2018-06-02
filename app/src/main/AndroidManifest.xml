@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EventActivity" />
+        <activity android:name=".EventActivity" >
+
+        </activity>
         <activity
             android:name=".EventReportActivity"
             android:screenOrientation="portrait"
@@ -31,6 +33,21 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustResize">
         </activity>
+        <service
+            android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDe86vjKkb-JBzHDB5Di6a4UnnjtnhjLUg" />
     </application>
 
 </manifest>

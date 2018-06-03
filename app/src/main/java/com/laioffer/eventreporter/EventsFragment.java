@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -77,6 +78,15 @@ public class EventsFragment extends Fragment {
                 for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
                     Event event = noteDataSnapshot.getValue(Event.class);
                     events.add(event);
+                    events.sort(new Comparator<Event>() {
+                        @Override
+                        public int compare(Event o1, Event o2) {
+                            if (o2.getTime() - o1.getTime() == 0) {
+                                return 0;
+                            }
+                            return o2.getTime() - o1.getTime() > 0 ? 1 : -1;
+                        }
+                    });
                 }
                 mAdapter = new EventListAdapter(events, getContext());
                 recyclerView.setAdapter(mAdapter);

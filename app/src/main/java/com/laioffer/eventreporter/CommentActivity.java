@@ -52,6 +52,7 @@ public class CommentActivity extends AppCompatActivity {
                 sendComment(eventId);
                 mEditTextComment.setText("");
                 getData(eventId, commentAdapter);
+                //finish();
 
             }
         });
